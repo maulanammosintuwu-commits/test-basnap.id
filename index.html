@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photobooth Funwalk Bandara</title>
+<style>
+    body {
+        margin: 0;
+        overflow: hidden;
+        background: black;
+    }
+    #camera-container {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+    }
+    video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none; /* Biar klik tidak kena frame */
+    }
+</style>
+</head>
+<body>
+    <div id="camera-container">
+        <video id="camera" autoplay playsinline></video>
+        <!-- Ganti nama file frame sesuai yang ada di repo -->
+        <img src="STORY PHOTO FRAME FUNWALK BANDARA.png" alt="Frame">
+    </div>
+
+<script>
+    const video = document.getElementById('camera');
+    navigator.mediaDevices.getUserMedia({ video: true })
+    .then(stream => {
+        video.srcObject = stream;
+    })
+    .catch(err => {
+        alert("Kamera tidak dapat diakses: " + err);
+    });
+</script>
+</body>
+</html>
